@@ -1,16 +1,17 @@
-import React,{useContext} from 'react';
-import ContentContext from './../../Context/ContentContext'
+import React,{Component} from 'react';
+import { AppContext} from './../../Context/GlobalContext'
 
-const useContent = ()=>{
-    // const [content] = useState('')
-    const {content} = useContext(ContentContext)
-
-    return (
-        <div className="container-fluid">
-            {content}
-        </div>
-    )
-    
+class Content extends Component{
+    render(){
+        const { ContentData } = this.context;
+        return (       
+            <div className="container-fluid">
+                {ContentData}
+            </div>
+        ) 
+    }
+       
 }
+Content.contextType = AppContext;
 
-export default useContent
+export default Content

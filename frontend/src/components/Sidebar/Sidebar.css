@@ -47,6 +47,7 @@
   }
 
   #sidebar-wrapper .list-group-item .text{
+    text-align: center;
     font-family: monospace;
     width: 30px;
   }

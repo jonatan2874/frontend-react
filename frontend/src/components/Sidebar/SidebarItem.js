@@ -1,21 +1,37 @@
-import React from 'react';
-/**
- * 
- * @param {Object} params Parametros del sidebar para renderizar la lista de modulos
- */
-const SidebarItem = (params = '') =>{
-    const ElementClass = `material-icons ${params.class}`
+import React, { Component } from 'react';
+import { AppContext} from './../../Context/GlobalContext'
+import {User} from './../Modules/User/User';
+import {UnderConstruction} from './../Modules/UnderConstruction/UnderConstruction';
 
-    return (
-        <li className="list-group-item d-flex justify-content-between align-items-center" key={params.key}>
-            <ol className="list-group-item d-flex justify-content-between align-items-center">
-                <span className={ElementClass}>{params.icon}</span>
-                <span className="label" >{params.name}</span> 
-            </ol>                    
-            <span className="material-icons rotate">play_arrow</span>
-        </li>
-    )
+class SidebarItem extends Component{
+    constructor(props){
+        super(props);
+        this.content = {
+            'User' : User(),
+            'UnderConstruction' : UnderConstruction()
+        }
+    }
+    
+    handler = ()=>{
+        const {changeContent} = this.context
+        let content = this.content[this.props.params.module];
+        changeContent(content)
+    }
+
+    render(){
+        const ElementClass = `material-icons ${this.props.params.class}`
+        return (
+            <li className="list-group-item d-flex justify-content-between align-items-center" onClick={this.handler} key={this.props.params.key} >
+                <ol className="list-group-item d-flex justify-content-between align-items-center">
+                    <span className={ElementClass}>{this.props.params.icon}</span>
+                    <span className="label" >{this.props.params.name}</span> 
+                </ol>                    
+                {this.props.params.dropdown && <span className="material-icons rotate">play_arrow</span>}
+            </li>
+        )
+    }
+    
     
 }
-
+SidebarItem.contextType = AppContext;
 export default SidebarItem

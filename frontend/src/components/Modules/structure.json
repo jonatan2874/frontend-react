@@ -1,0 +1,46 @@
+[
+    {
+        "key"    : 1,
+        "name"   : "Programacion",
+        "icon"   : "map",
+        "module" : "UnderConstruction",
+        "dropdown" : true
+    },
+    {
+        "key"    : 2,
+        "name"   : "Gestion de operaciones",
+        "icon"   : "format_list_bulleted",
+        "module" : "UnderConstruction",
+        "dropdown" : true
+    },
+    {
+        "key"    : 3,
+        "name"   : "Perfiles",
+        "icon"   : "tune",
+        "module" : "UnderConstruction",
+        "dropdown" : true
+    },
+    {
+        "key"    : 4,
+        "name"   : "Roles",
+        "icon"   : "R",
+        "module" : "UnderConstruction",
+        "class"  : "text",
+        "dropdown" : false
+    },
+    {
+        "key"    : 5,
+        "name"   : "Usuario",
+        "icon"   : "U",
+        "module" : "User",
+        "class"  : "text",
+        "dropdown" : false
+    },
+    {
+        "key"    : 6,
+        "name"   : "Reportes",
+        "icon"   : "insert_drive_file",
+        "module" : "UnderConstruction",
+        "dropdown" : true
+    }
+]

@@ -12,7 +12,7 @@ const useHeader = ()=>{
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex justify-content-between">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom d-flex justify-content-between mb-4">
             <div className="d-flex justify-content-between">
                 <span className='material-icons' onClick={collapseSidebar}>dehaze</span>
                 <span className="label" >Prueba Front-end </span>
