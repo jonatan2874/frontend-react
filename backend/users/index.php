@@ -4,9 +4,9 @@
 	header("Access-Control-Allow-Headers: *");
 	error_reporting(E_ERROR | E_PARSE);
 
-	require 'Login.php';
+	require 'Users.php';
 	// OBJETO DE LA CLASE
-	$obj    = new Login();
+	$obj    = new Users();
 	$method = $_SERVER['REQUEST_METHOD'];
 	$json   = file_get_contents('php://input');
 	$data   = json_decode($json,true);
@@ -16,7 +16,7 @@
 		*/
 
 		case 'GET':
-				$result=$obj->show($_GET);
+				$result=$obj->getUsers($_GET);
 				if($result['status']){
 					$response['status'] = 202;
 					$response['data']   = $result['data'];
@@ -27,12 +27,36 @@
 		break;
 
 		case 'POST':
+			$result =$obj->addUser($data);
+			if($result['status']){
+				$response['status'] = 202;
+				$response['data']=array('status'=>'success',"data"=> $result);
+			}else{
+				$response['status'] = 400;
+				$response['data']=array('failure'=>'Ha ocurrido un error','detalle'=>$result['detalle']);
+			}
 			break;
 
 		case 'PUT':
+			$result =$obj->editUser($data);
+			if($result['status']){
+				$response['status'] = 202;
+				$response['data']=array('status'=>'success',"data"=> $result);
+			}else{
+				$response['status'] = 400;
+				$response['data']=array('failure'=>'Ha ocurrido un error','detalle'=>$result['detalle']);
+			}
 			break;
 
 		case 'DELETE':
+			$result =$obj->deleteUser($data);
+			if($result['status']){
+				$response['status'] = 202;
+				$response['data']=array('success'=>'eliminada',"data"=>$result);
+			}else{
+				$response['status'] = 400;
+				$response['data']=array('failure'=>'Ha ocurrido un error','detalle'=>$result['detalle']);
+			}
 			break;
 
 		default:

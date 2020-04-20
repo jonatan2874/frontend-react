@@ -4,9 +4,9 @@
 	header("Access-Control-Allow-Headers: *");
 	error_reporting(E_ERROR | E_PARSE);
 
-	require 'Login.php';
+	require 'Token.php';
 	// OBJETO DE LA CLASE
-	$obj    = new Login();
+	$obj    = new Token();
 	$method = $_SERVER['REQUEST_METHOD'];
 	$json   = file_get_contents('php://input');
 	$data   = json_decode($json,true);

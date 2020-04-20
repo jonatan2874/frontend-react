@@ -1,6 +1,6 @@
 <?php
 
-	class Login{
+	class Token{
 		private $UsuarioDb    = 'root';
 		private $PasswordDb   = '';
 		private $ServidorDb = 'localhost';
@@ -35,9 +35,7 @@
 						contrasena,
 						token
 					FROM users 
-					WHERE 
-						username='$data[username]'
-					AND contrasena='$data[contrasena]' ";
+					WHERE token='$data[token]' ";
 			$query = mysqli_query($this->mysql,$sql);
 			$result = $query->fetch_assoc();
 
@@ -45,11 +43,6 @@
 				$arrayResponse = array('status'=>false, 'detalle' =>'No existe usuario con esos datos' );
 			}
 			else{
-				$token = password_hash(date("Y-m-d H:i:s")."PASSWORD_DEFAULT", PASSWORD_DEFAULT );
-				$sql = "UPDATE users SET token='$token' WHERE username='$data[username]' AND contrasena='$data[contrasena]' ";
-				$query = mysqli_query($this->mysql,$sql);
-				$result['token'] = $token;
-
 				$arrayResponse = array('status'=>true, 'data' =>$result );
 			}
 
