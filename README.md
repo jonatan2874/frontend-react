@@ -1,2 +1,2 @@
-# frontend-test
-Test frontend Senior
+# frontend-react
+Responsive frontend en react
